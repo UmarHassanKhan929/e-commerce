@@ -9,9 +9,6 @@ const connectDatabase = () => {
         .then((data) =>
             console.log("DB Connection Successfull: " + data.connection.host)
         )
-        .catch((err) => {
-            console.log(err);
-        });
 };
 
 module.exports = connectDatabase
