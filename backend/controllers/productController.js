@@ -6,6 +6,8 @@ const ApiFeatures = require('../utils/apiFeatures')
 
 //create product - admin
 exports.createProduct = catchAsyncErrors(async (req,res)=>{
+
+    req.body.user = req.user.id
     const product = await Product.create(req.body)
     
     res.status(201).json({
@@ -60,7 +62,8 @@ exports.getAllProducts = catchAsyncErrors(async (req,res)=>{
 
     res.status(200).json({
         success:true,
-        products
+        products,
+        productCount
     })
 })
 
@@ -75,6 +78,5 @@ exports.getProductDetails = catchAsyncErrors(async (req,res,next)=>{
     res.status(200).json({
         success:true,
         product,
-        productCount
     })
 })
