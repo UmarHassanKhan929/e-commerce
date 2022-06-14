@@ -127,7 +127,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
 
   // get all reviews of product
 exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
-    let product = await Product.findById(req.params.id);
+    let product = await Product.findById(req.query.id);
 
     if (!product) {
         return next(new ErrorHandler("product not found", 404));
